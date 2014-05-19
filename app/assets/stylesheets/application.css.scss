@@ -10,6 +10,20 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+@import "bourbon";
+@import "bitters/bitters";
+@import "neat";
+@import "refills/navigation";
+@import "refills/hero";
+@import "refills/footer-2";
+@import "refills/footer";
+@import 'welcome';
+@import "refills/icon-bullet-points";
+@import "refills/accordion-tabs-minimal";
+@import "refills/vertical-tabs";
+
+.centering {
+  display: inline-block
+}

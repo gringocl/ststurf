@@ -1,0 +1,65 @@
+<div class="vertical-tabs-container">
+  <div class="vertical-tabs">
+    <a href="#" class="js-vertical-tab vertical-tab is-active" rel="tab1">Item 1</a>
+    <a href="#" class="js-vertical-tab vertical-tab" rel="tab2">Item 2</a>
+    <a href="#" class="js-vertical-tab vertical-tab" rel="tab3">Item 3</a>
+    <a href="#" class="js-vertical-tab vertical-tab" rel="tab4">Item 4</a>
+  </div>
+
+  <div class="vertical-tab-content-container">
+    <a href="" class="js-vertical-tab-accordion-heading vertical-tab-accordion-heading is-active" rel="tab1">Item 1</a>
+    <div id="tab1" class="js-vertical-tab-content vertical-tab-content">
+      <%= render 'refills/accordion_tabs_minimal'  %>
+    </div>
+
+    <a href="" class="js-vertical-tab-accordion-heading vertical-tab-accordion-heading" rel="tab2">Item 2</a>
+    <div id="tab2" class="js-vertical-tab-content vertical-tab-content">
+      <%= render 'refills/accordion_tabs_minimal'  %>
+    </div>
+
+    <a href="" class="js-vertical-tab-accordion-heading vertical-tab-accordion-heading" rel="tab3">Item 3</a>
+    <div id="tab3" class="js-vertical-tab-content vertical-tab-content">
+      <%= render 'refills/accordion_tabs_minimal'  %>
+    </div>
+
+    <a href="" class="js-vertical-tab-accordion-heading vertical-tab-accordion-heading" rel="tab4">Item 4</a>
+    <div id="tab4" class="js-vertical-tab-content vertical-tab-content">
+      <%= render 'refills/accordion_tabs_minimal'  %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(".js-vertical-tab-content").hide();
+  $(".js-vertical-tab-content:first").show();
+
+  /* if in tab mode */
+  $(".js-vertical-tab").click(function(event) {
+    event.preventDefault();
+
+    $(".js-vertical-tab-content").hide();
+    var activeTab = $(this).attr("rel");
+    $("#"+activeTab).show();
+
+    $(".js-vertical-tab").removeClass("is-active");
+    $(this).addClass("is-active");
+
+    $(".js-vertical-tab-accordion-heading").removeClass("is-active");
+    $(".js-vertical-tab-accordion-heading[rel^='"+activeTab+"']").addClass("is-active");
+  });
+
+  /* if in accordion mode */
+  $(".js-vertical-tab-accordion-heading").click(function(event) {
+    event.preventDefault()
+
+    $(".js-vertical-tab-content").hide();
+    var accordion_activeTab = $(this).attr("rel");
+    $("#"+accordion_activeTab).show();
+
+    $(".js-vertical-tab-accordion-heading").removeClass("is-active");
+    $(this).addClass("is-active");
+
+    $(".js-vertical-tab").removeClass("is-active");
+    $(".js-vertical-tab[rel^='"+accordion_activeTab+"']").addClass("is-active");
+  });
+</script>
